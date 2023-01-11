@@ -5,6 +5,8 @@ import d3 from 'd3';
 
 import BarChart from './BarChart'
 import './App.css';
+import KlineChart from './KlineChart';
+import KlineCharts from './KlineCharts';
 
 // interface BarChartType {
 //   name: string;
@@ -64,10 +66,15 @@ import './App.css';
 
 function App() {
   return (
-    <BarChart id="111" />
+    <div>
+      {/* <BarChart id="111" /> */}
 
-    
-    
+      {/* <KlineChart /> */}
+      <KlineCharts />
+    </div>
+
+
+
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />

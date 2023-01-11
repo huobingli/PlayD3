@@ -2,10 +2,24 @@ import React, { Component } from 'react'
 import * as d3 from 'd3'
 
 class BarChart extends Component {
+    constructor() {
+        super()
+        console.log("constructor!! ")
+    }
+
     componentDidMount() {
-        console.log(123)
+        console.log("componentDidMount!! ")
         this.drawChart();
     }
+
+    componentDidUpdate() {
+        console.log("componentDidUpdate!! ")
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount!! ")
+    }
+
     drawChart() {
         const data = [12, 5, 6, 6, 9, 10];
 
@@ -25,7 +39,7 @@ class BarChart extends Component {
             .attr("fill", "green");
     }
     render() {
-        console.log(this.props.id)
+        console.log(`render!! ${this.props.id}`)
         return <div id={"#" + this.props.id}>{this.props.id}</div>
     }
 }
