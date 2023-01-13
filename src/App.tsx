@@ -7,6 +7,7 @@ import BarChart from './BarChart'
 import './App.css';
 import KlineChart from './KlineChart';
 import KlineCharts from './KlineCharts';
+import PlotCanvas from './PlotCanvas';
 
 // interface BarChartType {
 //   name: string;
@@ -70,7 +71,8 @@ function App() {
       {/* <BarChart id="111" /> */}
 
       {/* <KlineChart /> */}
-      <KlineCharts />
+      {/* <KlineCharts /> */}
+      <PlotCanvas />
     </div>
 
 
