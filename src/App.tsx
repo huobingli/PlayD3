@@ -8,6 +8,7 @@ import './App.css';
 import KlineChart from './KlineChart';
 import KlineCharts from './KlineCharts';
 import PlotCanvas from './PlotCanvas';
+import CandleChart from './CandleChart';
 
 // interface BarChartType {
 //   name: string;
@@ -72,7 +73,8 @@ function App() {
 
       {/* <KlineChart /> */}
       {/* <KlineCharts /> */}
-      <PlotCanvas />
+      {/* <PlotCanvas /> */}
+      <CandleChart />
     </div>
 
 

@@ -39,8 +39,7 @@ const PlotCanvas = () => {
     };
 
     const width = 700//+svg.attr("width");
-    const height = 500//+svg.attr("height");
-    const svg = d3.select("#PlotCanvas").append('svg').attr('width', width).attr('height', height).style("background", "#fcfcfc");;
+    const height = 400//+svg.attr("height");
     const margin = { top: 40, right: 40, bottom: 80, left: 100 };
     const iWidth: number = width - margin.left - margin.right;
     const iHeight: number = height - margin.top - margin.bottom;
@@ -53,13 +52,14 @@ const PlotCanvas = () => {
     const aduration = 1;
 
     const renderInit = (data: Record<string, any>[]) => {
+        const svg = d3.select("#PlotCanvas").append('svg').attr('width', width).attr('height', height).style("background", "#fcfcfc");;
         xScale = d3
             .scaleLinear()
             .domain([d3.min(data, xValue) ?? 0, d3.max(data, xValue) ?? 0])
             .range([0, iWidth])
             .nice();
 
-        const extent = [0, 10]
+        const extent = [0, 10].reverse()
         // const extent = d3.extent(data, yValue).reverse() 
 
         yScale = d3
@@ -96,7 +96,7 @@ const PlotCanvas = () => {
             .attr("id", "xaxis");
         xAxisGroup
             .append("text")
-            .attr("font-size", "2em")
+            .attr("font-size", "1em")
             .attr("y", 60)
             .attr("x", iWidth / 2)
             .attr("fill", "#333333")
@@ -105,10 +105,8 @@ const PlotCanvas = () => {
     };
 
     const renderUpdate = (seq: DataProps[]) => {
-
         console.log(seq)
         const g = d3.select("#svg");
-
         let circleUpdates = g.selectAll("circle").data(seq, (d: any) => d["地区"]);
 
         const circleEnter = circleUpdates
@@ -133,12 +131,8 @@ const PlotCanvas = () => {
 
     const init = () => {
         d3.csv("./hubeinxt.csv").then(
-            // (data) => {
-            //     console.log(data)
-            // }
-
             (data: DataProps[]) => {
-                
+
                 if (data === undefined) {
                     return
                 }
@@ -150,14 +144,14 @@ const PlotCanvas = () => {
                         d["新增确诊"] = 0
                     }
                 });
-                
+
                 allDates = Array.from(new Set(data.map((d) => d["日期"])));
-                
+
                 allDates = allDates.sort((a: number, b: number) => {
                     //@ts-ignore
                     return new Date(a) - new Date(b);
                 });
-                
+
                 sequantial = [];
                 allDates.forEach(() => {
                     sequantial.push([]);
@@ -166,7 +160,7 @@ const PlotCanvas = () => {
                     // @ts-ignore
                     sequantial[allDates.indexOf(d["日期"])].push(d);
                 });
-                
+
                 renderInit(data);
 
                 let c = 0;
